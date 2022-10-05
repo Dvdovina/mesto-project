@@ -1,0 +1,9 @@
+.element__text-box {
+    align-items: baseline;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px 15px 25px 21px;
+    width: 100%;
+}
