@@ -1,11 +1,19 @@
 .elements__grid {
     align-content: center;
-    column-gap: 17px;
     display: grid;
+    gap: 20px 17px;
     grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
-    justify-items: baseline;
+    justify-items: center;
     list-style: none;
-    margin: 0;
+    margin: 0 auto;
+    max-width: 880px;
     padding: 0;
-    row-gap: 20px;
+    width: 100%;
+}
+
+@media (max-width: 900px) {
+    .elements__grid {
+        max-width: 581px;
+    }
+    
 }

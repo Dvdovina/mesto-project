@@ -4,24 +4,25 @@
     background-image: url('../../../images/add-button/add-button.svg');
     background-position: center;
     background-repeat: no-repeat;
+    border-radius: 2px;
     border: 2px solid white;
     height: 50px;
     margin-left: auto;
     padding: 0;
     transition: .2s ease-in-out;
     width: 150px;
+    cursor: pointer;
 }
 
 .profile__add-button:hover {
     opacity: .6;
-    cursor: pointer;
-
 }
 
-@media (max-width: 550px) {
+@media (max-width: 900px) {
     .profile__add-button {
         height: 50px;
         margin: 0;
         width: 282px;
+        background-size: 16px 16px;
     }
 }

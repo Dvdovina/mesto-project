@@ -10,7 +10,7 @@
     width: 100%;
 }
 
-@media (max-width: 550px) {
+@media (max-width: 900px) {
     .profile__info {
         padding: 26px 0 36px;
         row-gap: 10px;
