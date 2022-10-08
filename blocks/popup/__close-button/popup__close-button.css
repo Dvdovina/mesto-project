@@ -1,6 +1,6 @@
 .popup__close-button {
     align-self: flex-end;
-    background-color: black;
+    background-color: transparent;
     background-image: url('../../../images/close-button/Close-button.svg');
     background-position: center;
     background-repeat: no-repeat;
