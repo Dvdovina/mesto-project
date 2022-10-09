@@ -12,12 +12,11 @@
 
 @media (max-width: 900px) {
     .profile__info {
-        padding: 26px 0 36px;
+        padding: 26px 42px 36px;
         row-gap: 10px;
         column-gap: 10px;
         max-width: 282px;
         grid-template-columns: 189px 18px;
-        padding-left: 40px;
         box-sizing: border-box;
     }
 }

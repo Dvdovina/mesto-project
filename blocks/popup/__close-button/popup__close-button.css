@@ -5,14 +5,14 @@
     background-position: center;
     background-repeat: no-repeat;
     border: none;
+    cursor: pointer;
     height: 32px;
-    margin-right: -76px;
-    margin-top: -75px;
     padding: 0;
     position: absolute;
+    right: -40px;
+    top: -40px;
     transition: .2s ease-in-out;
     width: 32px;
-    cursor: pointer;
 }
 
 .popup__close-button:hover {
@@ -23,8 +23,7 @@
     .popup__close-button {
         height: 20px;
         width: 20px;
-        margin-top: -62px;
-        margin-right: -20px;
+        right: 0;
         background-size: contain;
     }
 }
