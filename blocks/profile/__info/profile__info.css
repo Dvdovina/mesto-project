@@ -8,15 +8,17 @@
     padding-left: 30px;
     row-gap: 12px;
     width: 100%;
+    justify-content: center;
 }
 
 @media (max-width: 900px) {
     .profile__info {
-        padding: 26px 42px 36px;
-        row-gap: 10px;
-        column-gap: 10px;
-        max-width: 282px;
-        grid-template-columns: 189px 18px;
         box-sizing: border-box;
+        column-gap: 10px;
+        grid-template-columns: 189px 18px;
+        justify-content: center;
+        max-width: 282px;
+        padding: 26px 0 36px;
+        row-gap: 10px;
     }
 }
