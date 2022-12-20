@@ -21,50 +21,8 @@
         </div>
         <button class="profile__add-button" type="button" aria-label="Добавить"></button>
       </section>
-      <section class="elements">
+      <section class="elements" aria-label="elements-grid">
         <ul class="elements__grid">
-          <li class="element">
-            <img class="element__image" src="./images/karachaevsk.jpg" alt="Замок.">
-            <div class="element__text-box">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="element__like-button" type="button" aria-label="Нравится"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус.">
-            <div class="element__text-box">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like-button" type="button" aria-label="Нравится"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/donbai.jpg" alt="Гора.">
-            <div class="element__text-box">
-              <h2 class="element__title">Домбай</h2>
-              <button class="element__like-button" type="button" aria-label="Нравится"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/elbrus.jpg" alt="Гора Эльбрус.">
-            <div class="element__text-box">
-              <h2 class="element__title">Гора Эльбрус</h2>
-              <button class="element__like-button" type="button" aria-label="Нравится"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/donbai.jpg" alt="Гора.">
-            <div class="element__text-box">
-              <h2 class="element__title">Домбай</h2>
-              <button class="element__like-button" type="button" aria-label="Нравится"></button>
-            </div>
-          </li>
-          <li class="element">
-            <img class="element__image" src="./images/karachaevsk.jpg" alt="Замок.">
-            <div class="element__text-box">
-              <h2 class="element__title">Карачаевск</h2>
-              <button class="element__like-button" type="button" aria-label="Нравится"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
@@ -93,6 +51,24 @@
         </form>
       </div>
     </div>
+    <div class="popup popup__img">
+      <div class="popup__img-container">
+        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+        <img class="popup__img-photo"
+          src="https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg" alt="Камчатка">
+        <p class="popup__img-caption">Камчатка</p>
+      </div>
+    </div>
+    <template id="card-template">
+      <li class="element">
+        <button class="element__delete-button" type="button"></button>
+        <img class="element__image" src="" alt="">
+        <div class="element__text-box">
+          <h2 class="element__title"></h2>
+          <button class="element__like-button" type="button" aria-label="Нравится"></button>
+        </div>
+      </li>
+    </template>
   </div>
   <script src="./cards.js"></script>
   <script src="./script.js"></script>
