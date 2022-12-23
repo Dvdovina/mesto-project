@@ -1,8 +1,9 @@
 .content {
     box-sizing: border-box;
+    flex: 1;
+    margin: 0 auto;
     max-width: 880px;
     width: 100%;
-    margin: 0 auto;
 }
 
 @media (max-width: 550px) {

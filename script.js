@@ -23,6 +23,8 @@ const popupImgTitle = popupImg.querySelector('.popup__img-caption');
 const popupImgCloseBtn = popupImg.querySelector('.popup__close-button');
 //
 const cardsList = document.querySelector('.elements__grid');
+const closeButtons = document.querySelectorAll('.popup__close-button');
+const cardTemplate = document.querySelector('#card-template').content;
 
 
 // Универсальная функция для открытия popup
@@ -35,6 +37,12 @@ function closePopup(popup) {
     popup.classList.remove('popup_opened');
 };
 
+//Универсальный обработчик крестиков закрытия
+closeButtons.forEach((button) => {
+    const popup = button.closest('.popup');
+    button.addEventListener('click', () => closePopup(popup));
+});
+
 
 
 //////Попап редактирование профиля:
@@ -46,21 +54,12 @@ popupEditBtn.addEventListener('click', function () {
     openPopup(popupProfile);
 });
 
-//Закрытие попапа profile
-popupCloseBtn.addEventListener('click', function () {
-    closePopup(popupProfile);
-});
-
-//Закрытие и сохранение данных попапа через Save Button
-popupSaveBtn.addEventListener('click', function () {
-    closePopup(popupProfile);
-});
-
 //Обработчик отправки формы
 function submitProfileForm(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileInfo.textContent = jobInput.value;
+    closePopup(popupProfile);
 };
 
 //Прикрепление обработчика к форме
@@ -70,7 +69,6 @@ popupProfileForm.addEventListener('submit', submitProfileForm);
 
 //Функция для создания и просмотра карточки пользователем (клонируем template, наполняем содержимым, удаление, like button)
 function createCard(titleValue, imgValue) {
-    const cardTemplate = document.querySelector('#card-template').content;
     const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
     cardElement.querySelector('.element__title').textContent = titleValue;
     const cardImage = cardElement.querySelector('.element__image');
@@ -114,32 +112,15 @@ popupCardOpenBtn.addEventListener('click', function () {
     openPopup(popupCard);
 });
 
-//Закрытие карточки
-popupCardCloseBtn.addEventListener('click', function () {
-    closePopup(popupCard);
-});
-
-//Кнопка создания карточки
-popupCardCreateBtn.addEventListener('click', function () {
-    closePopup(popupCard);
-});
-
 //Обработчик отправки формы
 function submitCardForm(evt) {
     evt.preventDefault(); 
     const newImg = createCard(cardTitle.value, cardLink.value)
     addNewCard(newImg, cardsList);
+    evt.target.reset();
     closePopup(popupCard);
 };
 
 
 //Прикрепление обработчика к форме
 popupCardForm.addEventListener('submit', submitCardForm);
-
-
-//Попап просмотра фото:
-
-//Закрытие фото 
-popupImgCloseBtn.addEventListener('click', function () {
-    closePopup(popupImg);
-});
