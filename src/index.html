@@ -52,9 +52,12 @@
       <div class="popup__container">
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Новое место</h3>
-        <form class="popup__form" name="place__info">
-          <input class="popup__input" name="place_name" type="text" id="title" placeholder="Название">
-          <input class="popup__input" name="photo_link" type="text" id="link" placeholder="Ссылка на картинку">
+        <form class="popup__form" name="place__info" novalidate>
+          <input class="popup__input" name="place_name" type="text" id="title" placeholder="Название" pattern="^[a-zA-Zа-яА-ЯёЁ0-9\s\-]+$" data-error-message="Разрешены только латинские,
+          кириллические буквы, знаки дефиса и пробелы" minlength="2" maxlength="30" value="" required>
+          <span class="popup__error"></span>
+          <input class="popup__input" name="photo_link" type="url" id="link" placeholder="Ссылка на картинку" value="" required>
+          <span class="popup__error popup__error_place_bottom"></span>
           <button type="submit" class="popup__submit-button">Создать</button>
         </form>
       </div>
