@@ -12,6 +12,7 @@
     margin-top: 48px;
     padding: 0;
     text-align: center;
+    transition: .2s linear;
     width: 358px;
 }
 
@@ -25,6 +26,7 @@
         height: 46px;
         line-height: 17px;
         margin-top: 44px;
+        transition: .2s linear;
         width: 238px;
     }
 }

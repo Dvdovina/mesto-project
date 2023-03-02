@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
+
 <body>
   <div class="page">
     <header class="header">
@@ -33,9 +35,15 @@
       <div class="popup__container">
         <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
         <h3 class="popup__title">Редактировать профиль</h3>
-        <form class="popup__form" name="user__info">
-          <input class="popup__input" name="user_name" type="text" id="Name" placeholder="Имя">
-          <input class="popup__input" name="user_about" type="text" id="About" placeholder="О Себе">
+        <form class="popup__form" name="user__info" novalidate>
+          <input class="popup__input" name="user_name" type="text" id="Name" placeholder="Имя" required minlength="2"
+          maxlength="40" pattern="^[a-zA-Zа-яА-ЯёЁ0-9\s\-]+$" data-error-message="Разрешены только латинские,
+          кириллические буквы, знаки дефиса и пробелы" value="">
+          <span class="popup__error"></span>
+          <input class="popup__input" name="user_about" type="text" id="About" placeholder="О Себе" required
+            minlength="2" maxlength="200" pattern="^[a-zA-Zа-яА-ЯёЁ0-9\s\-]+$" data-error-message="Разрешены только латинские,
+            кириллические буквы, знаки дефиса и пробелы" value="">
+            <span class="popup__error popup__error_place_bottom"></span>
           <button type="submit" class="popup__submit-button">Сохранить</button>
         </form>
       </div>
@@ -73,4 +81,5 @@
   <script src="./components/card.js"></script>
   <script src="./index.js"></script>
 </body>
+
 </html>
