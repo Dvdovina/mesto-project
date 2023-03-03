@@ -23,7 +23,6 @@ const popupImgPhoto = popupImg.querySelector('.popup__img-photo');
 const popupImgTitle = popupImg.querySelector('.popup__img-caption');
 const popupImgCloseBtn = popupImg.querySelector('.popup__close-button');
 //
-
 const closeButtons = document.querySelectorAll('.popup__close-button');
 
 

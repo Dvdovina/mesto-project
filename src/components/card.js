@@ -1,32 +1,32 @@
 const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-    ];
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+];
 
 
-    ////////////Добавление карточки пользователем
+////////////Добавление карточки пользователем
 
 const cardTemplate = document.querySelector('#card-template').content;
 const cardsList = document.querySelector('.elements__grid');
@@ -39,16 +39,16 @@ function createCard(titleValue, imgValue) {
   cardImage.src = imgValue;
   cardImage.alt = titleValue;
   cardImage.addEventListener('click', function () {
-      popupImg.querySelector('.popup__img-photo').src = imgValue;
-      popupImg.querySelector('.popup__img-photo').alt = titleValue;
-      popupImg.querySelector('.popup__img-caption').textContent = titleValue;
-      openPopup(popupImg);
+    popupImg.querySelector('.popup__img-photo').src = imgValue;
+    popupImg.querySelector('.popup__img-photo').alt = titleValue;
+    popupImg.querySelector('.popup__img-caption').textContent = titleValue;
+    openPopup(popupImg);
   });
   cardElement.querySelector('.element__like-button').addEventListener('click', function (evt) {
-      evt.target.classList.toggle('element__like-button_active');
+    evt.target.classList.toggle('element__like-button_active');
   });
   cardElement.querySelector('.element__delete-button').addEventListener('click', function () {
-      cardElement.remove();
+    cardElement.remove();
   });
   return cardElement;
 };
@@ -62,8 +62,8 @@ function addNewCard(card, container) {
 //Функция добавления 6 шаблонных карточек
 function loadCards(array) {
   array.forEach(item => {
-      const element = createCard(item.name, item.link);
-      addNewCard(element, cardsList);
+    const element = createCard(item.name, item.link);
+    addNewCard(element, cardsList);
   });
 };
 
