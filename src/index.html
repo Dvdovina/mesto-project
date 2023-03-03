@@ -39,11 +39,11 @@
           <input class="popup__input" name="user_name" type="text" id="Name" placeholder="Имя" required minlength="2"
           maxlength="40" pattern="^[a-zA-Zа-яА-ЯёЁ0-9\s\-]+$" data-error-message="Разрешены только латинские,
           кириллические буквы, знаки дефиса и пробелы" value="">
-          <span class="popup__error"></span>
+          <span class="popup__error Name-error"></span>
           <input class="popup__input" name="user_about" type="text" id="About" placeholder="О Себе" required
             minlength="2" maxlength="200" pattern="^[a-zA-Zа-яА-ЯёЁ0-9\s\-]+$" data-error-message="Разрешены только латинские,
             кириллические буквы, знаки дефиса и пробелы" value="">
-            <span class="popup__error popup__error_place_bottom"></span>
+            <span class="popup__error popup__error_place_bottom About-error">eeeeerrr</span>
           <button type="submit" class="popup__submit-button">Сохранить</button>
         </form>
       </div>
@@ -55,9 +55,9 @@
         <form class="popup__form" name="place__info" novalidate>
           <input class="popup__input" name="place_name" type="text" id="title" placeholder="Название" pattern="^[a-zA-Zа-яА-ЯёЁ0-9\s\-]+$" data-error-message="Разрешены только латинские,
           кириллические буквы, знаки дефиса и пробелы" minlength="2" maxlength="30" value="" required>
-          <span class="popup__error"></span>
+          <span class="popup__error title-error"></span>
           <input class="popup__input" name="photo_link" type="url" id="link" placeholder="Ссылка на картинку" value="" required>
-          <span class="popup__error popup__error_place_bottom"></span>
+          <span class="popup__error popup__error_place_bottom link-error"></span>
           <button type="submit" class="popup__submit-button">Создать</button>
         </form>
       </div>
@@ -83,6 +83,7 @@
   </div>
   <script src="./components/card.js"></script>
   <script src="./index.js"></script>
+  <script src="./components/validate.js"></script>
 </body>
 
 </html>
