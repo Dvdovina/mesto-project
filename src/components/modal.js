@@ -116,3 +116,5 @@ function submitCardForm(evt) {
 
 //Прикрепление обработчика к форме
 popupCardForm.addEventListener('submit', submitCardForm);
+
+export { openPopup, closePopup, closeOnEsc, submitProfileForm, submitCardForm };

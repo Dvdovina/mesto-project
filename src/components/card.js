@@ -68,3 +68,5 @@ function loadCards(array) {
 };
 
 loadCards(initialCards)
+
+export { cardTemplate, cardsList, initialCards, createCard, addNewCard, loadCards };

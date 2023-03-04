@@ -89,3 +89,5 @@ const enableValidation = () => {
 
 enableValidation();
 
+export { settings, showInputError, hideInputError, isValid, hasInvalidInput, toggleButtonState, enableValidation };
+
