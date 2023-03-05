@@ -20,35 +20,19 @@ const cardLink = popupCard.querySelector('#link');
 //Переменные popup IMG
 const popupImg = document.querySelector('.popup__img');
 //
-const closeButtons = document.querySelectorAll('.popup__close-button');
+const popups = document.querySelectorAll('.popup')
 
 
-//Универсальный обработчик крестиков закрытия
-closeButtons.forEach((button) => {
-    const popup = button.closest('.popup');
-    button.addEventListener('click', () => closePopup(popup));
-});
-
-
-//Закрытие popupProfile по клику на оверлей
-popupProfile.addEventListener("click", (evt) => {
-    if (evt.currentTarget === evt.target) {
-        closePopup(popupProfile)
-    }
-})
-
-//Закрытие popupCard по клику на оверлей
-popupCard.addEventListener("click", (evt) => {
-    if (evt.currentTarget === evt.target) {
-        closePopup(popupCard)
-    }
-})
-
-//Закрытие popupImg по клику на оверлей
-popupImg.addEventListener("click", (evt) => {
-    if (evt.currentTarget === evt.target) {
-        closePopup(popupImg)
-    }
+//Закрытие попапов через нажатие на крестик или оверлей
+popups.forEach((popup) => {
+  popup.addEventListener('mousedown', (evt) => {
+      if (evt.target.classList.contains('popup_opened')) {
+          closePopup(popup)
+      }
+      if (evt.target.classList.contains('popup__close-button')) {
+        closePopup(popup)
+      }
+  })
 })
 
 
