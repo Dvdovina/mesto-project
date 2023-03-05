@@ -1,5 +1,5 @@
 import './pages/index.css';
-import { settings, showInputError, hideInputError, isValid, hasInvalidInput, toggleButtonState, enableValidation } from './components/validate'
+import { settings, showInputError, hideInputError, isValid, hasInvalidInput, toggleButtonState, enableValidation, setEventListeners } from './components/validate'
 import { openPopup, closePopup} from './components/modal';
 import { initialCards } from './components/card';
 

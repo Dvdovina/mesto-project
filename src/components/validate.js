@@ -26,7 +26,7 @@ const hideInputError = (formElement, inputElement, settings) => {
 };
 
 
-const isValid = (formElement, inputElement) => {
+const isValid = (formElement, inputElement, settings) => {
     if (inputElement.validity.patternMismatch) {
         inputElement.setCustomValidity(inputElement.dataset.errorMessage);
     } else {
@@ -47,7 +47,7 @@ const hasInvalidInput = (inputList) => {
 };
 
 
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, settings) => {
     if (hasInvalidInput(inputList)) {
         buttonElement.disabled = true;
         buttonElement.classList.add(settings.inactiveButtonClass);
@@ -58,36 +58,36 @@ const toggleButtonState = (inputList, buttonElement) => {
 };
 
 
-const setEventListeners = (formElement) => {
+const setEventListeners = (formElement, settings) => {
     const inputList = Array.from(formElement.querySelectorAll(settings.inputSelector));
     const buttonElement = formElement.querySelector(settings.submitButtonSelector);
-    toggleButtonState(inputList, buttonElement);
+    toggleButtonState(inputList, buttonElement, settings);
     inputList.forEach((inputElement) => {
         inputElement.addEventListener('input', () => {
-            isValid(formElement, inputElement)
-            toggleButtonState(inputList, buttonElement);
+            isValid(formElement, inputElement, settings)
+            toggleButtonState(inputList, buttonElement, settings);
         });
     });
     formElement.addEventListener('reset', () => {
         setTimeout(() => {
-            toggleButtonState(inputList, buttonElement, selectors), 0
+            toggleButtonState(inputList, buttonElement, settings), 0
         });
     });
 };
 
 
-const enableValidation = () => {
+const enableValidation = (settings) => {
     const formList = Array.from(document.querySelectorAll(settings.formSelector));
     formList.forEach((formElement) => {
         formElement.addEventListener('submit', (evt) => {
             evt.preventDefault();
         });
-        setEventListeners(formElement);
+        setEventListeners(formElement, settings);
     });
 };
 
 
-enableValidation();
+enableValidation(settings);
 
-export { settings, showInputError, hideInputError, isValid, hasInvalidInput, toggleButtonState, enableValidation };
+export { settings, showInputError, isValid, hasInvalidInput, toggleButtonState, setEventListeners, enableValidation };
 
