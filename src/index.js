@@ -2,6 +2,8 @@ import './pages/index.css';
 import { settings, showInputError, hideInputError, isValid, hasInvalidInput, toggleButtonState, enableValidation, setEventListeners } from './components/validate'
 import { openPopup, closePopup } from './components/modal';
 import { initialCards, createCard, addNewCard, loadCards, cardsList } from './components/card';
+import { getUserData, getResponse } from './components/api';
+
 
 
 //Переменные Popup Profile
@@ -76,7 +78,3 @@ function submitCardForm(evt) {
 
 //Прикрепление обработчика к форме
 popupCardForm.addEventListener('submit', submitCardForm);
-
-
-
-
