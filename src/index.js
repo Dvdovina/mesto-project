@@ -2,7 +2,7 @@ import './pages/index.css';
 import { settings, showInputError, hideInputError, isValid, hasInvalidInput, toggleButtonState, enableValidation, setEventListeners } from './components/validate'
 import { openPopup, closePopup } from './components/modal';
 import { initialCards, createCard, addNewCard, loadCards, cardsList } from './components/card';
-import { getResponse, getUserData, getCards, postUserProfile, postCard, deleteCard, addLike, deleteLike, addAvatar } from './components/api';
+import { getUserData, getCards, postUserProfile, postCard, deleteCard, addLike, deleteLike, addAvatar } from './components/api';
 import { getResponse, renderLoading } from './components/utils';
 
 

@@ -108,4 +108,4 @@ const addAvatar = (avatar) => {
 addAvatar()
 
 
-export { getResponse, getUserData, getCards, postUserProfile, postCard, deleteCard, addLike, deleteLike, addAvatar }
+export { getUserData, getCards, postUserProfile, postCard, deleteCard, addLike, deleteLike, addAvatar }
