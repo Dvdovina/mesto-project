@@ -26,6 +26,9 @@ const popups = document.querySelectorAll('.popup')
 const userProfile = document.querySelector('.profile')
 const userAvatar = document.querySelector('.profile__avatar')
 const avatarBtn = document.querySelector('.profile__avatar-button')
+//Переменные Popup Avatar
+// const popupAvatar = document.querySelector('.popup__avatar')
+// const popupAvatarForm = popupAvatar.querySelector('.popup__form')
 
 
 
@@ -83,3 +86,17 @@ function submitCardForm(evt) {
 
 //Прикрепление обработчика к форме
 popupCardForm.addEventListener('submit', submitCardForm);
+
+
+// //Попап аватар
+// //Открытие
+// avatarBtn.addEventListener('click', function () {
+//   openPopup(popupAvatar);
+// });
+
+
+// //Обработчик отправки формы
+// function saveAvatar(evt) {
+//   evt.preventDefault();
+//   closePopup(popupAvatar)
+// }

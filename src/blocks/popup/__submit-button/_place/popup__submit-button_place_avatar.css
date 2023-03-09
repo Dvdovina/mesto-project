@@ -1,0 +1,9 @@
+.popup__submit-button_place_avatar {
+    margin-top: 20px;
+}
+
+@media (max-width: 550px) {
+    .popup__submit-button_place_avatar {
+        margin-top: 18px;
+    }
+}

@@ -16,12 +16,12 @@
       <section class="profile">
         <div class="profile__avatar-container"><img class="profile__avatar" src="<%=require('./images/kusto.jpg')%>"
             alt="Аватар пользователя">
-            <button class="profile__avatar-button" type="button" aria-label="Редактировать"></button>
-          </div>
+          <button class="profile__avatar-button" type="button" aria-label="Редактировать"></button>
+        </div>
         <div class="profile__info">
-          <h1 class="profile__name"></h1>
+          <h1 class="profile__name">Человек Паук</h1>
           <button class="profile__edit-button" aria-label="Редактировать" type="button"></button>
-          <p class="profile__description"></p>
+          <p class="profile__description">Супергерой</p>
         </div>
         <button class="profile__add-button" type="button" aria-label="Добавить"></button>
       </section>
@@ -74,6 +74,18 @@
         <p class="popup__img-caption">Камчатка</p>
       </div>
     </div>
+    <!-- <div class="popup popup__avatar">
+      <div class="popup__container">
+        <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <form class="popup__form" name="form_avatar">
+          <input class="popup__input" name="avatar_link" type="url" id="avatar" placeholder="Ссылка на аватар" value=""
+            required>
+          <span class="popup__error avatar-error"></span>
+        </form>
+        <button type="submit" class="popup__submit-button popup__submit-button_place_avatar">Сохранить</button>
+      </div>
+    </div> -->
     <template id="card-template">
       <li class="element">
         <button class="element__delete-button" type="button"></button>
