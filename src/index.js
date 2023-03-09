@@ -5,8 +5,6 @@ import { initialCards, createCard, addNewCard, loadCards, cardsList } from './co
 import { getUserData, getCards, postUserProfile, postCard, deleteCard, addLike, deleteLike, addAvatar } from './components/api';
 import { getResponse, renderLoading } from './components/utils';
 
-
-
 //Переменные Popup Profile
 const popupProfile = document.querySelector('.popup__profile');
 const popupEditBtn = document.querySelector('.profile__edit-button');
@@ -100,3 +98,14 @@ popupCardForm.addEventListener('submit', submitCardForm);
 //   evt.preventDefault();
 //   closePopup(popupAvatar)
 // }
+
+Promise.all([getUserData(), getCards()])
+  .then(([user]) => {
+    profileName.textContent = user.name;
+    profileInfo.textContent = user.about;
+    userProfile.id = user._id;
+    userAvatar.src = user.avatar;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
