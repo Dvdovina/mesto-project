@@ -24,6 +24,9 @@ const cardLink = popupCard.querySelector('#link');
 //Общие
 const popups = document.querySelectorAll('.popup')
 const userProfile = document.querySelector('.profile')
+const userAvatar = document.querySelector('.profile__avatar')
+const avatarBtn = document.querySelector('.profile__avatar-button')
+
 
 
 //Закрытие попапов через нажатие на крестик или оверлей
