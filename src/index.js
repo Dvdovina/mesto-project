@@ -23,6 +23,7 @@ const cardTitle = popupCard.querySelector('#title');
 const cardLink = popupCard.querySelector('#link');
 //Общие
 const popups = document.querySelectorAll('.popup')
+const userProfile = document.querySelector('.profile')
 
 
 //Закрытие попапов через нажатие на крестик или оверлей
