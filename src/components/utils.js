@@ -8,14 +8,15 @@ const getResponse = (res) => {
 
 
 //Кнопка во время загрузки
-const renderLoading = (isLoading, button, buttonText = 'Сохранить', loadingText = 'Сохранение...') => {
-  const submitButton = button.querySelector('.popup__submit-button')
+const textOnLoad = (isLoading, button) => {
+  const loadingBtn = button.querySelector('.popup__submit-button')
   if (isLoading) {
-    submitButton.textContent = loadingText;
+    loadingBtn.textContent = 'Сохранение...'
   } else {
-    submitButton.textContent = buttonText;
+    loadingBtn.textContent = "Сохранить";
   }
 }
 
 
-export { getResponse, renderLoading }
+
+export { getResponse, textOnLoad }
