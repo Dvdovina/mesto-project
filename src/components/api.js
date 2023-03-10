@@ -37,13 +37,13 @@ const getCards = () => {
 getCards()
 
 //Отправка инфо пользователя
-const postUserProfile = (user, description) => {
+const postUserProfile = (profileName, profileInfo) => {
     return fetch(`${config.baseUrl}`, {
         method: 'PATCH',
         headers: config.headers,
         body: JSON.stringify({
-            name: user,
-            about: description
+            name: profileName,
+            about: profileInfo
         })
     })
 }
