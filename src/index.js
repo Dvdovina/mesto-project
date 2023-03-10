@@ -108,7 +108,6 @@ function submitCardForm(evt) {
   postCard(cardTitle.value, cardLink.value)
     .then((card) => {
       cardsList.prepend(createCard(card, userProfile))
-      closePopup(popupCard);
       evt.target.reset();
     })
     .catch((err) => {
@@ -117,8 +116,8 @@ function submitCardForm(evt) {
     .finally(() => {
       textOnLoad(false, evt.target);
     });
+    closePopup(popupCard);
 };
-
 
 
 //Прикрепление обработчика к форме
