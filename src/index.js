@@ -25,8 +25,8 @@ const userProfile = document.querySelector('.profile')
 const userAvatar = document.querySelector('.profile__avatar')
 const avatarBtn = document.querySelector('.profile__avatar-button')
 //Переменные Popup Avatar
-// const popupAvatar = document.querySelector('.popup__avatar')
-// const popupAvatarForm = popupAvatar.querySelector('.popup__form')
+const popupAvatar = document.querySelector('.popup__avatar')
+const popupAvatarForm = popupAvatar.querySelector('.popup__form')
 
 
 
@@ -86,19 +86,14 @@ function submitCardForm(evt) {
 popupCardForm.addEventListener('submit', submitCardForm);
 
 
-// //Попап аватар
-// //Открытие
-// avatarBtn.addEventListener('click', function () {
-//   openPopup(popupAvatar);
-// });
+//Попап аватар
+//Открытие
+avatarBtn.addEventListener('click', function () {
+  openPopup(popupAvatar);
+});
 
 
-// //Обработчик отправки формы
-// function saveAvatar(evt) {
-//   evt.preventDefault();
-//   closePopup(popupAvatar)
-// }
-
+//Загрузка инфо и карточек с сервера
 Promise.all([getUserData(), getCards()])
   .then(([user]) => {
     profileName.textContent = user.name;
