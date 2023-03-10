@@ -13,7 +13,6 @@ const profileName = document.querySelector('.profile__name');
 const profileInfo = document.querySelector('.profile__description');
 const nameInput = popupProfileForm.querySelector('#Name');
 const jobInput = popupProfileForm.querySelector('#About');
-const submitButton = document.querySelectorAll('.popup__submit-button')
 //Переменные Popup Create Card
 const popupCard = document.querySelector('.popup__card');
 const popupCardOpenBtn = document.querySelector('.profile__add-button');
@@ -28,7 +27,7 @@ const avatarBtn = document.querySelector('.profile__avatar-button')
 //Переменные Popup Avatar
 const popupAvatar = document.querySelector('.popup__avatar')
 const popupAvatarForm = popupAvatar.querySelector('.popup__form')
-
+const avatarInput = popupAvatar.querySelector('.popup__input')
 
 
 //Загрузка инфо и карточек с сервера
@@ -58,7 +57,6 @@ popups.forEach((popup) => {
     }
   })
 })
-
 
 //Открытие попапа edit profile 
 popupEditBtn.addEventListener('click', function () {
@@ -99,7 +97,6 @@ function submitProfileForm(evt) {
 };
 
 
-
 //Прикрепление обработчика к форме
 popupProfileForm.addEventListener('submit', submitProfileForm);
 
@@ -119,4 +116,21 @@ popupProfileForm.addEventListener('submit', submitProfileForm);
 
 
 // //Обработчик отправки формы с аватаром
+function submitAvatarForm(evt) {
+  textOnLoad(true, evt.target)
+  evt.preventDefault();
+  addAvatar(avatarInput.value)
+  .then((res) => {
+    popupAvatarForm.src = res.avatar;
+    closePopup(popupAvatar)
+    evt.target.reset();
+  })
+  .catch((err) => {
+    console.log(err);
+  })
+  .finally(() => {
+   textOnLoad(false, evt.target);
+  });
+};
 
+popupAvatarForm.addEventListener('submit', submitAvatarForm)
