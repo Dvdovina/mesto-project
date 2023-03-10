@@ -1,6 +1,6 @@
 
 import { openPopup } from "./modal";
-
+import { deleteCard, addLike, deleteLike } from "./api"
 
 const popupImg = document.querySelector('.popup__img');
 const popupPhoto = popupImg.querySelector('.popup__img-photo');
@@ -9,71 +9,72 @@ const cardTemplate = document.querySelector('#card-template').content;
 const cardsList = document.querySelector('.elements__grid');
 
 
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+function deleteImg(evt) {
+  evt.target.closest('.element').remove();
+}
 
-//Функция для создания и просмотра карточки пользователем (клонируем template, наполняем содержимым, удаление, like button)
-function createCard(titleValue, imgValue) {
+function likeImg(evt) {
+  evt.target.classList.toggle('element__like-button_active')
+}
+
+function openPopupImg(evt) {
+  popupPhoto.src = evt.target.src;
+  popupPhoto.alt = evt.target.alt;
+  popupTitle.textContent = evt.target.alt;
+  openPopup(popupImg)
+}
+
+function createCard(card, user) {
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  cardElement.querySelector('.element__title').textContent = titleValue;
   const cardImage = cardElement.querySelector('.element__image');
-  cardImage.src = imgValue;
-  cardImage.alt = titleValue;
-  cardImage.addEventListener('click', function () {
-    popupPhoto.src = imgValue;
-    popupPhoto.alt = titleValue;
-    popupTitle.textContent = titleValue;
-    openPopup(popupImg);
+  const likeBtn = cardElement.querySelector('.element__like-button');
+  const delBtn = cardElement.querySelector('.element__delete-button');
+  const likeCounter = cardElement.querySelector('.element__like-counter');
+  cardImage.src = card.link;
+  cardImage.alt = card.name;
+  cardElement.querySelector('.element__title').textContent = card.name;
+  if (user.id !== card.owner._id) {
+    delBtn.classList.add('element__delete-button_disabled');
+  };
+  delBtn.addEventListener('click', (evt) => {
+    deleteCard(card._id)
+      .then(() => {
+        deleteImg(evt)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
+  );
+  likeCounter.textContent = card.likes.length;
+  card.likes.forEach(() => {
+    if (card.likes._id === user._id) {
+      likeBtn.classList.add('element__like-button_active')
+    };
   });
-  cardElement.querySelector('.element__like-button').addEventListener('click', function (evt) {
-    evt.target.classList.toggle('element__like-button_active');
-  });
-  cardElement.querySelector('.element__delete-button').addEventListener('click', function () {
-    cardElement.remove();
-  });
+  likeBtn.addEventListener('click', (evt) => {
+    if (!evt.target.classList.contains('element__like-button_active')) {
+      addLike(card._id)
+        .then((card) => {
+          likeImg(evt);
+          likeCounter.textContent = card.likes.length;
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    } else {
+      deleteLike(card._id)
+        .then((card) => {
+          likeImg(evt);
+          likeCounter.textContent = card.likes.length;
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+  })
+  cardImage.addEventListener('click', openPopupImg);
   return cardElement;
 };
 
-
-//Функция добавления новой карточки
-function addNewCard(card, container) {
-  container.prepend(card);
-};
-
-
-//Функция добавления 6 шаблонных карточек
-function loadCards(array) {
-  array.forEach(item => {
-    const element = createCard(item.name, item.link);
-    addNewCard(element, cardsList);
-  });
-};
-
-loadCards(initialCards)
-
-
-export { initialCards, createCard, addNewCard, loadCards, cardsList }
+export { createCard, cardsList }

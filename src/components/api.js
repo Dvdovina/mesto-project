@@ -57,7 +57,7 @@ const postCard = (name, link) => {
         headers: config.headers,
         body: JSON.stringify({
             name: name,
-            link: link,
+            link: link
         })
     })
 }

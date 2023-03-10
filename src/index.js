@@ -1,9 +1,9 @@
 import './pages/index.css';
 import { settings, showInputError, hideInputError, isValid, hasInvalidInput, toggleButtonState, enableValidation, setEventListeners } from './components/validate'
 import { openPopup, closePopup } from './components/modal';
-import { initialCards, createCard, addNewCard, loadCards, cardsList } from './components/card';
 import { getUserData, getCards, postUserProfile, postCard, deleteCard, addLike, deleteLike, addAvatar } from './components/api';
 import { getResponse, renderLoading } from './components/utils';
+import { createCard, cardsList} from './components/card'
 
 //Переменные Popup Profile
 const popupProfile = document.querySelector('.popup__profile');
@@ -95,11 +95,14 @@ avatarBtn.addEventListener('click', function () {
 
 //Загрузка инфо и карточек с сервера
 Promise.all([getUserData(), getCards()])
-  .then(([user]) => {
+  .then(([user, cards]) => {
     profileName.textContent = user.name;
     profileInfo.textContent = user.about;
     userProfile.id = user._id;
     userAvatar.src = user.avatar;
+    cards.forEach((card) => {
+      cardsList.append(createCard(card, userProfile))
+    });
   })
   .catch((err) => {
     console.log(err);
