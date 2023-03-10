@@ -93,7 +93,7 @@ function submitProfileForm(evt) {
     })
     .finally(() => {
       textOnLoad(false, evt.target);
-  });
+    });
 };
 
 
@@ -101,18 +101,28 @@ function submitProfileForm(evt) {
 popupProfileForm.addEventListener('submit', submitProfileForm);
 
 
-// //Обработчик отправки формы с карточкой
-// function submitCardForm(evt) {
-//   evt.preventDefault();
-//   const newImg = createCard(cardTitle.value, cardLink.value)
-//   addNewCard(newImg, cardsList);
-//   evt.target.reset();
-//   closePopup(popupCard);
-// };
+//Обработчик отправки формы с карточкой
+function submitCardForm(evt) {
+  textOnLoad(true, evt.target)
+  evt.preventDefault();
+  postCard(cardTitle.value, cardLink.value)
+    .then((card) => {
+      cardsList.prepend(createCard(card, userProfile))
+      closePopup(popupCard);
+      evt.target.reset();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      textOnLoad(false, evt.target);
+    });
+};
 
 
-// //Прикрепление обработчика к форме
-// popupCardForm.addEventListener('submit', submitCardForm);
+
+//Прикрепление обработчика к форме
+popupCardForm.addEventListener('submit', submitCardForm);
 
 
 // //Обработчик отправки формы с аватаром
@@ -120,17 +130,17 @@ function submitAvatarForm(evt) {
   textOnLoad(true, evt.target)
   evt.preventDefault();
   addAvatar(avatarInput.value)
-  .then((res) => {
-    popupAvatarForm.src = res.avatar;
-    closePopup(popupAvatar)
-    evt.target.reset();
-  })
-  .catch((err) => {
-    console.log(err);
-  })
-  .finally(() => {
-   textOnLoad(false, evt.target);
-  });
+    .then((res) => {
+      popupAvatarForm.src = res.avatar;
+      closePopup(popupAvatar)
+      evt.target.reset();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      textOnLoad(false, evt.target);
+    });
 };
 
 popupAvatarForm.addEventListener('submit', submitAvatarForm)

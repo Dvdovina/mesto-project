@@ -66,7 +66,7 @@ postCard()
 
 //Удаление карточек
 const deleteCard = (cardId) => {
-    return fetch(`https://nomoreparties.co/v1/plus-cohort-20/cards/likes/${cardId}`, {
+    return fetch(`https://nomoreparties.co/v1/plus-cohort-20/cards/${cardId}`, {
         method: 'DELETE',
         headers: config.headers,
     })
