@@ -3,42 +3,38 @@ import { getResponse } from "./utils"
 
 
 const config = {
-    baseUrl: 'https://nomoreparties.co/v1/plus-cohort-20/users/me',
+    baseUrl: 'https://nomoreparties.co/v1/plus-cohort-20/',
     headers: {
         authorization: '34da551f-8b90-47e1-a3e0-d31f8d9fdbf4',
         'Content-Type': 'application/json'
     }
 }
 
+function request(source, options) {
+    return fetch(source, options).then(getResponse)
+  }
+  
 //Получение информации пользователя
 const getUserData = () => {
-    return fetch(`${config.baseUrl}`, {
+    return request(`${config.baseUrl}/users/me`, {
         headers: config.headers
     })
-        .then((res) => {
-            return getResponse(res)
-        })
         .catch(err => console.log(err));
 }
 
-getUserData()
 
 //Получение карточек с сервера
 const getCards = () => {
-    return fetch(`https://nomoreparties.co/v1/plus-cohort-20/cards`, {
+    return request(`${config.baseUrl}/cards`, {
         headers: config.headers
     })
-        .then((res) => {
-            return getResponse(res)
-        })
         .catch(err => console.log(err));
 }
 
-getCards()
 
 //Отправка инфо пользователя
 const postUserProfile = (profileName, profileInfo) => {
-    return fetch(`${config.baseUrl}`, {
+    return request(`${config.baseUrl}/users/me`, {
         method: 'PATCH',
         headers: config.headers,
         body: JSON.stringify({
@@ -48,11 +44,10 @@ const postUserProfile = (profileName, profileInfo) => {
     })
 }
 
-postUserProfile()
 
 //Отправка карточек
 const postCard = (name, link) => {
-    return fetch('https://nomoreparties.co/v1/plus-cohort-20/cards', {
+    return request(`${config.baseUrl}/cards`, {
         method: 'POST',
         headers: config.headers,
         body: JSON.stringify({
@@ -62,50 +57,45 @@ const postCard = (name, link) => {
     })
 }
 
-postCard()
 
 //Удаление карточек
 const deleteCard = (cardId) => {
-    return fetch(`https://nomoreparties.co/v1/plus-cohort-20/cards/${cardId}`, {
+    return request(`${config.baseUrl}/cards/${cardId}`, {
         method: 'DELETE',
         headers: config.headers,
     })
 }
 
-deleteCard()
 
 //Добавить Лайк
 const addLike = (cardId) => {
-    return fetch(`https://nomoreparties.co/v1/plus-cohort-20/cards/likes/${cardId}`, {
+    return request(`${config.baseUrl}/cards/likes/${cardId}`, {
         method: 'PUT',
         headers: config.headers,
     })
 }
 
-addLike()
 
 //Удалить лайк
 const deleteLike = (cardId) => {
-    return fetch(`https://nomoreparties.co/v1/plus-cohort-20/cards/likes/${cardId}`, {
+    return request(`${config.baseUrl}/cards/likes/${cardId}`, {
         method: 'DELETE',
         headers: config.headers,
     })
 }
 
-deleteLike()
 
 //Добавить/поменять аватар
 const addAvatar = (avatar) => {
-    return fetch('https://nomoreparties.co/v1/plus-cohort-20/users/me/avatar', {
+    return request(`${config.baseUrl}/users/me/avatar`, {
         method: 'PATCH',
         headers: config.headers,
         body: JSON.stringify({
-            avatar: avatar,
+            avatar: avatar
         })
     })
 }
 
-addAvatar()
 
 
 export { getUserData, getCards, postUserProfile, postCard, deleteCard, addLike, deleteLike, addAvatar }

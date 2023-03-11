@@ -28,6 +28,7 @@ const avatarBtn = document.querySelector('.profile__avatar-button')
 const popupAvatar = document.querySelector('.popup__avatar')
 const popupAvatarForm = popupAvatar.querySelector('.popup__form')
 const avatarInput = popupAvatar.querySelector('.popup__input')
+const profileAvatar = document.querySelector('.profile__avatar')
 
 
 //Загрузка инфо и карточек с сервера
@@ -73,6 +74,7 @@ popupCardOpenBtn.addEventListener('click', function () {
 
 //Открытие попапа аватар
 avatarBtn.addEventListener('click', function () {
+  avatarInput.value = avatar.src
   openPopup(popupAvatar);
 });
 
@@ -116,7 +118,7 @@ function submitCardForm(evt) {
     .finally(() => {
       textOnLoad(false, evt.target);
     });
-    closePopup(popupCard);
+  closePopup(popupCard);
 };
 
 
@@ -130,9 +132,8 @@ function submitAvatarForm(evt) {
   evt.preventDefault();
   addAvatar(avatarInput.value)
     .then((res) => {
-      popupAvatarForm.src = res.avatar;
+      profileAvatar.src = res.avatar;
       closePopup(popupAvatar)
-      evt.target.reset();
     })
     .catch((err) => {
       console.log(err);
@@ -140,6 +141,7 @@ function submitAvatarForm(evt) {
     .finally(() => {
       textOnLoad(false, evt.target);
     });
+  evt.target.reset();
 };
 
 popupAvatarForm.addEventListener('submit', submitAvatarForm)
