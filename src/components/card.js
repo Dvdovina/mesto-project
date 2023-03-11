@@ -46,6 +46,8 @@ function createCard(card, user) {
       })
   }
   );
+  //Like Btns
+  
   likeCounter.textContent = card.likes.length;
   card.likes.forEach(() => {
     if (card.likes._id === user._id) {
