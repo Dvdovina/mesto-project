@@ -8,7 +8,7 @@ const getResponse = (res) => {
 
 
 //Кнопка во время загрузки
-const textOnLoad = (isLoading, button) => {
+const renderLoading = (isLoading, button) => {
   const loadingBtn = button.querySelector('.popup__submit-button')
   if (isLoading) {
     loadingBtn.textContent = 'Сохранение...'
@@ -19,4 +19,4 @@ const textOnLoad = (isLoading, button) => {
 
 
 
-export { getResponse, textOnLoad }
+export { getResponse, renderLoading }

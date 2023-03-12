@@ -13,7 +13,7 @@ function deleteImg(evt) {
   evt.target.closest('.element').remove();
 }
 
-function likeImg(evt) {
+function toggleLike(evt) {
   evt.target.classList.toggle('element__like-button_active')
 }
 
@@ -58,7 +58,7 @@ function createCard(card, user) {
     if (!evt.target.classList.contains('element__like-button_active')) {
       addLike(card._id)
         .then((card) => {
-          likeImg(evt);
+          toggleLike(evt);
           likeCounter.textContent = card.likes.length;
         })
         .catch((err) => {
@@ -67,7 +67,7 @@ function createCard(card, user) {
     } else {
       deleteLike(card._id)
         .then((card) => {
-          likeImg(evt);
+          toggleLike(evt);
           likeCounter.textContent = card.likes.length;
         })
         .catch((err) => {

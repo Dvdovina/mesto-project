@@ -19,7 +19,6 @@ const getUserData = () => {
     return request(`${config.baseUrl}/users/me`, {
         headers: config.headers
     })
-        .catch(err => console.log(err));
 }
 
 
@@ -28,7 +27,6 @@ const getCards = () => {
     return request(`${config.baseUrl}/cards`, {
         headers: config.headers
     })
-        .catch(err => console.log(err));
 }
 
 
