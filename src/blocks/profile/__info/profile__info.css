@@ -3,12 +3,12 @@
     column-gap: 18px;
     display: grid;
     grid-auto-rows: minmax(min-content, max-content);
-    grid-template-columns: 294px 1fr;
+    grid-template-columns: auto auto;
     max-width: 336px;
     padding-left: 30px;
     row-gap: 12px;
     width: 100%;
-    justify-content: center;
+    justify-content: left;
 }
 
 @media (max-width: 900px) {
