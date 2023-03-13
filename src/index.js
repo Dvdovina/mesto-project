@@ -22,7 +22,6 @@ const cardLink = popupCard.querySelector('#link');
 //Общие
 const popups = document.querySelectorAll('.popup')
 const userProfile = document.querySelector('.profile')
-const userAvatar = document.querySelector('.profile__avatar')
 const avatarBtn = document.querySelector('.profile__avatar-button')
 //Переменные Popup Avatar
 const popupAvatar = document.querySelector('.popup__avatar')
@@ -37,7 +36,7 @@ Promise.all([getUserData(), getCards()])
     profileName.textContent = user.name;
     profileInfo.textContent = user.about;
     userProfile.id = user._id;
-    userAvatar.src = user.avatar;
+    profileAvatar.src = user.avatar;
     cards.forEach((card) => {
       cardsList.append(createCard(card, userProfile))
     });
